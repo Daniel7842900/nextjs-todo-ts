@@ -7,7 +7,7 @@ export default function Button({ children, styles }: Props) {
   return (
     <button
       className={
-        "w-[36px] h-[36px] border border-black rounded-full " +
+        "w-[36px] h-[36px] border border-gray-500 rounded-full " +
         (styles ? styles : "")
       }
     >

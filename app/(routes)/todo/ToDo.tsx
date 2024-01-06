@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Card from "@/app/_components/Card";
+import AddButton from "@/app/(routes)/todo/AddButton";
+import NewTask from "@/app/(routes)/todo/NewTask";
 
 export default function ToDo(props) {
   return (
@@ -19,6 +21,7 @@ export default function ToDo(props) {
       <Card />
       <Card />
       <Card />
+      <NewTask />
     </div>
   );
 }
