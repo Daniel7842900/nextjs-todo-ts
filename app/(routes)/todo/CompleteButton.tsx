@@ -8,7 +8,7 @@ interface Props {
 export default function CompleteButton({ styles }: Props) {
   return (
     <Button styles={styles}>
-      <FaCheck className="w-full h-full" />
+      <FaCheck className="w-3/4 h-3/4" />
     </Button>
   );
 }
