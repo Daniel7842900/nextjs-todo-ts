@@ -15,7 +15,7 @@ export default function Card() {
           className="resize-none w-full outline-0 cursor-pointer focus:cursor-text"
         ></textarea>
       </div>
-      <CompleteButton styles="mr-4" />
+      <CompleteButton styles="mr-4 hover:bg-green-500 hover:border-green-500 group" />
     </div>
   );
 }
