@@ -1,5 +1,6 @@
 import Button from "@/app/_components/Button";
 import { FaPlus } from "react-icons/fa";
+import IconButton from "@/app/_components/IconButton";
 
 interface Props {
   styles?: string;
@@ -7,8 +8,8 @@ interface Props {
 
 export default function AddButton({ styles }: Props) {
   return (
-    <Button styles={styles}>
+    <IconButton styles={styles}>
       <FaPlus className="w-full h-full text-gray-500" />
-    </Button>
+    </IconButton>
   );
 }

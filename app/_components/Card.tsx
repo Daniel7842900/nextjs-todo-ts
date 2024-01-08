@@ -1,19 +1,35 @@
 import Button from "@/app/_components/Button";
 import CompleteButton from "@/app/(routes)/todo/CompleteButton";
 import { useState } from "react";
+import CreateButton from "@/app/(routes)/todo/CreateButton";
 
-interface ICard {
+export interface ITask {
+  idx: number;
   content: string;
   complete: boolean;
+  isNew: boolean;
 }
 
-export default function Card() {
-  const [content, setContent] = useState("");
-  const [complete, isComplete] = useState(false);
+interface Props {
+  idx: number;
+  content: string;
+  complete: boolean;
+  isNew: boolean;
+  handleOnChange: (newContent: string, idx: number) => void;
+  isNewTaskClicked: boolean;
+}
 
+export default function Card({
+  idx,
+  content,
+  complete,
+  isNew,
+  handleOnChange,
+}: Props) {
   const handleContentOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newContent = e.target.value;
-    setContent(newContent);
+    // setContent(newContent);
+    handleOnChange(newContent, idx);
   };
 
   return (
@@ -30,7 +46,11 @@ export default function Card() {
           onChange={handleContentOnChange}
         />
       </div>
-      <CompleteButton styles="mr-4 hover:bg-green-500 hover:border-green-500 group" />
+      {isNew ? (
+        <CreateButton styles="mr-4 hover:bg-blue-500 hover:border-blue-500 group" />
+      ) : (
+        <CompleteButton styles="mr-4 hover:bg-green-500 hover:border-green-500 group" />
+      )}
     </div>
   );
 }
