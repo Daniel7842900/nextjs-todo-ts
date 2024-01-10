@@ -19,6 +19,7 @@ interface Props {
   ) => void;
   handleCreateTaskOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   handleContentChange: (newContent: string, idx: number) => void;
+  handleCompleteChange: (newValue: boolean, idx: number) => void;
 }
 
 export default function Card({
@@ -29,10 +30,15 @@ export default function Card({
   handleNewTaskContentChange,
   handleCreateTaskOnClick,
   handleContentChange,
+  handleCompleteChange,
 }: Props) {
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (isNew) handleNewTaskContentChange(e);
     else handleContentChange(e.target.value, idx);
+  };
+
+  const handleCompleteOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    handleCompleteChange(!complete, idx);
   };
 
   return (
@@ -56,7 +62,10 @@ export default function Card({
           onCreate={handleCreateTaskOnClick}
         />
       ) : (
-        <CompleteButton styles="mr-4 hover:bg-green-500 hover:border-green-500 group" />
+        <CompleteButton
+          styles="mr-4 hover:bg-green-500 hover:border-green-500 group"
+          onComplete={handleCompleteOnClick}
+        />
       )}
     </div>
   );

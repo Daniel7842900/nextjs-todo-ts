@@ -19,6 +19,14 @@ export default function ToDo(props) {
     );
   };
 
+  const handleCompleteChange = (newValue: boolean, idx: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.idx === idx ? { ...task, complete: newValue } : task,
+      ),
+    );
+  };
+
   const handleCreateTask = (newTask: ITask) => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
@@ -34,6 +42,7 @@ export default function ToDo(props) {
             complete={task.complete}
             isNew={task.isNew}
             handleContentChange={handleContentChange}
+            handleCompleteChange={handleCompleteChange}
           />
         );
       })}
