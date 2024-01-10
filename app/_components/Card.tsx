@@ -1,6 +1,6 @@
 import Button from "@/app/_components/Button";
 import CompleteButton from "@/app/(routes)/todo/CompleteButton";
-import { useState } from "react";
+import React, { useState } from "react";
 import CreateButton from "@/app/(routes)/todo/CreateButton";
 
 export interface ITask {
@@ -15,8 +15,11 @@ interface Props {
   content: string;
   complete: boolean;
   isNew: boolean;
-  handleOnChange: (newContent: string, idx: number) => void;
+  // handleOnChange: (newContent: string, idx: number) => void;
+  handleOnChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   isNewTaskClicked: boolean;
+  // handleCreateTaskOnClick: (newTask: ITask) => void;
+  handleCreateTaskOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Card({
@@ -25,13 +28,8 @@ export default function Card({
   complete,
   isNew,
   handleOnChange,
+  handleCreateTaskOnClick,
 }: Props) {
-  const handleContentOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newContent = e.target.value;
-    // setContent(newContent);
-    handleOnChange(newContent, idx);
-  };
-
   return (
     <div className="w-8/12 min-h-[96px] flex border border-red-200 bg-white rounded-lg my-2 justify-between items-center">
       <div className="flex-1 mx-4">
@@ -43,11 +41,16 @@ export default function Card({
           placeholder="Add a task..."
           rows="3"
           className="resize-none w-full outline-0 cursor-pointer focus:cursor-text"
-          onChange={handleContentOnChange}
+          value={content}
+          onChange={handleOnChange}
         />
       </div>
       {isNew ? (
-        <CreateButton styles="mr-4 hover:bg-blue-500 hover:border-blue-500 group" />
+        <CreateButton
+          styles="mr-4 hover:bg-blue-500 hover:border-blue-500 group"
+          // onCreate={handleCreate}
+          onCreate={handleCreateTaskOnClick}
+        />
       ) : (
         <CompleteButton styles="mr-4 hover:bg-green-500 hover:border-green-500 group" />
       )}
