@@ -1,7 +1,7 @@
 interface Props {
   children?: React.ReactNode;
   styles?: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Button({ children, styles, onClick }: Props) {

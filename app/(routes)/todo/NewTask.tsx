@@ -52,14 +52,15 @@ export default function NewTask({
   return (
     <>
       {!isNewTaskClicked ? (
-        <div
-          className="w-8/12 min-h-[96px] flex rounded-lg my-2 justify-center items-center"
-          onClick={() => handleNewTaskClickedChange(true)}
-        >
-          <AddButton styles="mx-2 border-0 " />
-          <span className="text-gray-500 text-2xl hover:cursor-pointer">
-            Add Task
-          </span>
+        <div className="w-8/12 min-h-[96px] flex rounded-lg my-2 justify-center items-center">
+          <AddButton
+            styles="mx-2 border-0 "
+            onClick={() => handleNewTaskClickedChange(true)}
+          >
+            <span className="text-gray-500 text-2xl hover:cursor-pointer">
+              Add Task
+            </span>
+          </AddButton>
         </div>
       ) : (
         <Card

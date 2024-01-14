@@ -4,12 +4,17 @@ import IconButton from "@/app/_components/IconButton";
 
 interface Props {
   styles?: string;
+  children?: React.ReactHTMLElement<any>;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export default function AddButton({ styles }: Props) {
+export default function AddButton({ styles, children, onClick }: Props) {
   return (
-    <IconButton styles={styles}>
-      <FaPlus className="w-full h-full text-gray-500" />
-    </IconButton>
+    <div className="flex justify-center items-center" onClick={onClick}>
+      <IconButton styles={styles}>
+        <FaPlus className="w-full h-full text-gray-500" />
+      </IconButton>
+      {children}
+    </div>
   );
 }
