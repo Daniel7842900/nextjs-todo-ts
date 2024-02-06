@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Card, { ITask } from "@/app/_components/Card";
-import NewTask from "@/app/(routes)/todo/NewTask";
+import Card, { ITask } from "@/app/components/Card";
+import NewTask from "./NewTask";
 
 export default function ToDo(props) {
   const [tasks, setTasks] = useState<ITask[]>([]);
@@ -32,7 +32,7 @@ export default function ToDo(props) {
   };
 
   return (
-    <div className="flex flex-col min-w-[1446px] border border-sky-200 items-center">
+    <div className="flex flex-col min-w-[1446px] items-center">
       {tasks.map((task) => {
         return (
           <Card

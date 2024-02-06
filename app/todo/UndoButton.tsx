@@ -1,5 +1,5 @@
 import { FaUndo } from "react-icons/fa";
-import IconButton from "@/app/_components/IconButton";
+import IconButton from "@/app/components/IconButton";
 
 interface Props {
   styles?: string;

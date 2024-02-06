@@ -1,6 +1,6 @@
-import AddButton from "@/app/(routes)/todo/AddButton";
+import AddButton from "./AddButton";
 import React, { useState } from "react";
-import Card, { ITask } from "@/app/_components/Card";
+import Card, { ITask } from "@/app/components/Card";
 
 interface Props {
   tasks: ITask[];

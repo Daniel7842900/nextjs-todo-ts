@@ -1,4 +1,4 @@
-import ToDo from "@/app/(routes)/todo/ToDo";
+import ToDo from "./ToDo";
 
 export default function Page() {
   return (

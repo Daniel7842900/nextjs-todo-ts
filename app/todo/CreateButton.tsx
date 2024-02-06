@@ -1,4 +1,4 @@
-import TextButton from "@/app/_components/TextButton";
+import TextButton from "@/app/components/TextButton";
 
 interface Props {
   styles?: string;

@@ -1,6 +1,6 @@
-import Button from "@/app/_components/Button";
+import Button from "@/app/components/Button";
 import { FaPlus } from "react-icons/fa";
-import IconButton from "@/app/_components/IconButton";
+import IconButton from "@/app/components/IconButton";
 
 interface Props {
   styles?: string;
