@@ -1,7 +1,7 @@
-import CompleteButton from "@/app/(routes)/todo/CompleteButton";
+import CompleteButton from "@/app/todo/CompleteButton";
 import React from "react";
-import CreateButton from "@/app/(routes)/todo/CreateButton";
-import UndoButton from "@/app/(routes)/todo/UndoButton";
+import CreateButton from "@/app/todo/CreateButton";
+import UndoButton from "@/app/todo/UndoButton";
 
 export interface ITask {
   idx: number;
