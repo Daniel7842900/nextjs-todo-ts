@@ -1,14 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import NewTask from "@/app/todo/NewTask";
+import { useState } from "react";
 import Card, { ITask } from "@/app/components/Card";
-import NewTask from "./NewTask";
 
-export default function ToDo(props) {
+export default function ToDo() {
   const [tasks, setTasks] = useState<ITask[]>([]);
-  const [isNewTaskClicked, setNewTaskClicked] = useState(false);
 
-  const handleNewTaskClickedChange = (newValue) => {
-    setNewTaskClicked(newValue);
+  const handleCreateTask = (newTask: ITask) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   const handleContentChange = (newContent: string, idx: number) => {
@@ -27,10 +26,6 @@ export default function ToDo(props) {
     );
   };
 
-  const handleCreateTask = (newTask: ITask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-  };
-
   return (
     <div className="flex flex-col min-w-[1446px] items-center">
       {tasks.map((task) => {
@@ -46,12 +41,7 @@ export default function ToDo(props) {
           />
         );
       })}
-      <NewTask
-        tasks={tasks}
-        isNewTaskClicked={isNewTaskClicked}
-        handleNewTaskClickedChange={handleNewTaskClickedChange}
-        handleCreateTask={handleCreateTask}
-      />
+      <NewTask tasks={tasks} handleCreateTask={handleCreateTask} />
     </div>
   );
 }

@@ -1,6 +1,5 @@
-import CompleteButton from "@/app/todo/CompleteButton";
-import React from "react";
 import CreateButton from "@/app/todo/CreateButton";
+import CompleteButton from "@/app/todo/CompleteButton";
 import UndoButton from "@/app/todo/UndoButton";
 
 export interface ITask {
@@ -15,11 +14,11 @@ interface Props {
   content: string;
   complete: boolean;
   isNew: boolean;
+  handleCreateTaskOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleContentChange: (newContent: string, idx: number) => void;
   handleNewTaskContentChange: (
     e: React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  handleCreateTaskOnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleContentChange: (newContent: string, idx: number) => void;
   handleCompleteChange: (newValue: boolean, idx: number) => void;
 }
 
@@ -29,8 +28,8 @@ export default function Card({
   complete,
   isNew,
   handleNewTaskContentChange,
-  handleCreateTaskOnClick,
   handleContentChange,
+  handleCreateTaskOnClick,
   handleCompleteChange,
 }: Props) {
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -50,7 +49,7 @@ export default function Card({
           : "w-8/12 min-h-[96px] bg-white flex border border-red-200 rounded-lg my-2 justify-between items-center "
       }
     >
-      <div className={"flex-1 mx-4"}>
+      <div className="flex-1 mx-4">
         <label htmlFor="task" className="hidden">
           Add a task
         </label>
@@ -64,25 +63,16 @@ export default function Card({
               : "resize-none w-full outline-0 cursor-pointer focus:cursor-text bg-white"
           }
           readOnly={complete ? true : false}
-          value={content}
           onChange={handleOnChange}
+          value={content}
         />
       </div>
       {isNew ? (
-        <CreateButton
-          styles="mr-4 hover:bg-blue-500 hover:border-blue-500 group"
-          onCreate={handleCreateTaskOnClick}
-        />
+        <CreateButton onCreate={handleCreateTaskOnClick} />
       ) : complete ? (
-        <UndoButton
-          styles="mr-4 hover:bg-yellow-500 hover:border-yellow-500 group"
-          onComplete={handleCompleteOnClick}
-        />
+        <UndoButton onUndo={handleCompleteOnClick} />
       ) : (
-        <CompleteButton
-          styles="mr-4 hover:bg-green-500 hover:border-green-500 group"
-          onComplete={handleCompleteOnClick}
-        />
+        <CompleteButton onComplete={handleCompleteOnClick} />
       )}
     </div>
   );

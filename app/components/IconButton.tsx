@@ -1,15 +1,21 @@
-import Button from "@/app/components/Button";
+import { IconType } from "react-icons";
 
 interface Props {
   styles?: string;
-  children?: React.ReactNode;
+  iconStyles?: string;
+  icon: IconType;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function IconButton({ styles, children, onClick }: Props) {
+export default function IconButton({
+  styles,
+  iconStyles,
+  icon: IconComponent,
+  onClick,
+}: Props) {
   return (
-    <Button styles={"w-[36px] h-[36px] " + styles} onClick={onClick}>
-      {children}
-    </Button>
+    <button onClick={onClick} className={styles}>
+      {IconComponent && <IconComponent className={iconStyles} />}
+    </button>
   );
 }
